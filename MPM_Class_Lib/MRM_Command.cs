@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
-namespace MPM_Class_Lib
+namespace MRM_Class_Lib
 {
     public enum MRM_Command_Enum
     {

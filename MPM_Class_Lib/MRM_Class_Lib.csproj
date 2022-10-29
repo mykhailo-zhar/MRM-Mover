@@ -7,8 +7,8 @@
     <ProjectGuid>{4B58F056-312E-480A-90EF-DCA9D8C2153A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MPM_Class_Lib</RootNamespace>
-    <AssemblyName>MPM_Class_Lib</AssemblyName>
+    <RootNamespace>MRM_Class_Lib</RootNamespace>
+    <AssemblyName>MRM_Class_Lib</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,6 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MRM_Command.cs" />
+    <Compile Include="MRM_Drive.cs" />
+    <Compile Include="MRM_IO.cs" />
+    <Compile Include="MRM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

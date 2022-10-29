@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MPM_Class_Lib;
+using MRM_Class_Lib;
 
 namespace MPM_Lab_2
 {

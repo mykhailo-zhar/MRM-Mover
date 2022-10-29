@@ -102,7 +102,7 @@ namespace MPM_Lab_2
             this.groupBox1.Controls.Add(this.IdentifyButton);
             this.groupBox1.Controls.Add(this.SaveButton);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupBox1.Location = new System.Drawing.Point(600, 0);
+            this.groupBox1.Location = new System.Drawing.Point(6, 0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 450);
             this.groupBox1.TabIndex = 6;
@@ -149,7 +149,7 @@ namespace MPM_Lab_2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(206, 450);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.Text = "MPM Console";
