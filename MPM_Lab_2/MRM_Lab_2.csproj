@@ -6,4 +6,8 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MPM_Class_Lib\MRM_Class_Lib.csproj" />
+  </ItemGroup>
+
 </Project>

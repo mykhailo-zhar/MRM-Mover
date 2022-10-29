@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPM_Lab_2", "MPM_Lab_2\MPM_Lab_2.csproj", "{C90E4229-5932-40E3-B980-9954AEE981CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MRM_Lab_2", "MPM_Lab_2\MRM_Lab_2.csproj", "{C90E4229-5932-40E3-B980-9954AEE981CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MRM_Class_Lib", "MPM_Class_Lib\MRM_Class_Lib.csproj", "{4B58F056-312E-480A-90EF-DCA9D8C2153A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C90E4229-5932-40E3-B980-9954AEE981CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C90E4229-5932-40E3-B980-9954AEE981CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C90E4229-5932-40E3-B980-9954AEE981CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B58F056-312E-480A-90EF-DCA9D8C2153A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B58F056-312E-480A-90EF-DCA9D8C2153A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B58F056-312E-480A-90EF-DCA9D8C2153A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B58F056-312E-480A-90EF-DCA9D8C2153A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
