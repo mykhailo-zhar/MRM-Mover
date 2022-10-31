@@ -20,19 +20,19 @@ namespace MPM_Lab_2
             Waiting();
         }
 
-        private IEnumerable<MRM_Command> Commands;
+        private IEnumerable<MRM_Frame> Commands;
 
         private void IdentifyButton_Click(object sender, EventArgs e)
         {
             var commands =
                 Command.Text.Split(
-                new[] { ';', ' ', ',', '.' , '\n', '\r' },
+                new[] { '\n', '\r', '\f' },
                 StringSplitOptions.RemoveEmptyEntries
                 )
-                .Select(p => MRM_Command.ProcessString(p))      
+                .Select(p => MRM_Frame.ProcessString(p))      
                 ;
 
-            if (commands.Any(p => p.Command == MRM_Command_Enum.Error) ||
+            if (commands.Any(p => p.ErrorFrame) ||
                 commands.Count() == 0
                 )
             {

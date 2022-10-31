@@ -24,8 +24,8 @@ namespace MRM_Class_Lib
     public class MRM_Command
     {
         private MRM_Command() { }
-        public MRM_Command_Enum Command { get; set; }
-
+        public MRM_Command_Enum Command { get; private set; }
+        public bool Error => Command == MRM_Command_Enum.Error;
         public double Value { get; set; }
 
         public string ToPrint()
