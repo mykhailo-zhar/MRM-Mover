@@ -12,12 +12,17 @@ namespace MPM_Lab_2
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void App()
         {
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+        }
+
+        static void Main()
+        {
+            App();
         }
     }
 }

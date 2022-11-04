@@ -20,34 +20,26 @@ namespace MPM_Lab_2
             Waiting();
         }
 
-        private IEnumerable<MRM_Frame> Commands;
+        private MRM_Instruction Instruction;
 
         private void IdentifyButton_Click(object sender, EventArgs e)
         {
-            var commands =
-                Command.Text.Split(
-                new[] { '\n', '\r', '\f' },
-                StringSplitOptions.RemoveEmptyEntries
-                )
-                .Select(p => MRM_Frame.ProcessString(p))      
-                ;
+            var instructions = MRM_Instruction.ProcessString(Command.Text);
 
-            if (commands.Any(p => p.ErrorFrame) ||
-                commands.Count() == 0
-                )
+            if (instructions.Error)
             {
                 Bad();
             }
             else { 
                 Good();
-                Commands = commands;
+                Instruction = instructions;
             }
         }
 
         private void EditButton_Click(object sender, EventArgs e)
         {
             Waiting();
-            Commands = null;
+            Instruction = null;
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -61,7 +53,7 @@ namespace MPM_Lab_2
             {
                 using (var Stream = new StreamWriter(Dialog.FileName))
                 {
-                    Commands.ToList().ForEach(c => Stream.WriteLine(c.ToPrint()));
+                    Stream.WriteLine(Instruction.ToPrint());
                 }
             }
         }
@@ -81,6 +73,13 @@ namespace MPM_Lab_2
                     IdentifyButton_Click(sender, e);
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MRM.MRMCreate();
+            MRM.MRMSetON();
+            MRM.MRMSetAll(0, 0, -30, 1, 1);
         }
     }
 }

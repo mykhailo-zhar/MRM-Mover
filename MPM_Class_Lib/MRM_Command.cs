@@ -61,7 +61,7 @@ namespace MRM_Class_Lib
                 case MRM_Command_Enum.DisableManipulator:
                     return "M04";
                 case MRM_Command_Enum.StopProgram:
-                    return "M05";
+                    return "M02";
                 default:
                     return Result;
             }

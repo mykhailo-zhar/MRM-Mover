@@ -65,6 +65,8 @@
     <Compile Include="MRMDLL\MRM_IO.cs" />
     <Compile Include="MRMDLL\MRM.cs" />
     <Compile Include="MRM_Frame.cs" />
+    <Compile Include="MRM_Instruction.cs" />
+    <Compile Include="MRM_Instruction_Processor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
