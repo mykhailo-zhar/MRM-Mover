@@ -18,6 +18,7 @@ namespace MPM_Lab_2
         {
             InitializeComponent();
             Waiting();
+            Clock.Start();
         }
 
         private MRM_Instruction Instruction;
@@ -30,7 +31,8 @@ namespace MPM_Lab_2
             {
                 Bad();
             }
-            else { 
+            else
+            {
                 Good();
                 Instruction = instructions;
             }
@@ -73,6 +75,22 @@ namespace MPM_Lab_2
                     IdentifyButton_Click(sender, e);
                 }
             }
+        }
+
+        private void Clock_Tick(object sender, EventArgs e)
+        {
+            short
+                X = (short)MRM_IO.PortIn(MRM_IO.DOSAdress),
+                Y = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 1),
+                C = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 2),
+                U1 = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 3),
+                U2 = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 4);
+
+            ShowX.Text = $"{X,5:F2}";
+            ShowY.Text = $"{Y,5:F2}";
+            ShowZx.Text = $"{C,5:F2}";
+            ShowU1.Text = $"{U1,5:F2}";
+            ShowU2.Text = $"{U2,5:F2}";
         }
     }
 }
