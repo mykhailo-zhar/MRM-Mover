@@ -33,7 +33,8 @@ namespace ConsoleTest
             MRM_IO.IOClose();
 
         }
-        static void Main(string[] args)
+        [STAThread]
+        static void MRM_Create()
         {
             MRMCreate();
             MRMSetON();
@@ -45,8 +46,23 @@ namespace ConsoleTest
                SendMessage(S1, BM_CLICK, 0, 0);
             */
             Console.ReadLine();
+        }
 
+        static void MovIng()
+        {
+            var to_move = new MRM_Command_Processor(1.0, 10.0, 90.0, 1.0);
+            for (int i = 0; i < 1000; i++)
+            {
+                to_move.Move();
+                Console.WriteLine($"DU: {to_move.Acceleration, 2:F2} Speed: {to_move.CurrentSpeed, 2:F2} Distance: {to_move.CurrentDistance, 2:F2}");
+                if (to_move.Completed) break;
+            }
+        }
 
+        static void Main(string[] args)
+        {
+
+            MovIng();
         }
     }
 }

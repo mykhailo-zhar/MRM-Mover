@@ -74,12 +74,5 @@ namespace MPM_Lab_2
                 }
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MRM.MRMCreate();
-            MRM.MRMSetON();
-            MRM.MRMSetAll(0, 0, -30, 1, 1);
-        }
     }
 }

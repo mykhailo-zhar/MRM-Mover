@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MRM_Class_Lib
 {
+    //Геометрия
     public class MRM_Instruction_Processor
     {
         public double X { get; set; } = 0;

@@ -60,12 +60,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MRM_Command.cs" />
+    <Compile Include="Command parsing\MRM_Command.cs" />
     <Compile Include="MRMDLL\MRM_Drive.cs" />
     <Compile Include="MRMDLL\MRM_IO.cs" />
     <Compile Include="MRMDLL\MRM.cs" />
-    <Compile Include="MRM_Frame.cs" />
-    <Compile Include="MRM_Instruction.cs" />
+    <Compile Include="Command parsing\MRM_Frame.cs" />
+    <Compile Include="Command parsing\MRM_Instruction.cs" />
+    <Compile Include="MRM_Command_Processor.cs" />
     <Compile Include="MRM_Instruction_Processor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
