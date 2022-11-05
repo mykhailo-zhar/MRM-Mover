@@ -58,7 +58,7 @@ namespace ConsoleTest
                 if (to_move.Completed) break;
             }
         }
-
+        [STAThread]
         static void Main(string[] args)
         {
 

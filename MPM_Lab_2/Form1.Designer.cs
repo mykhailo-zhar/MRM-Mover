@@ -36,6 +36,8 @@ namespace MPM_Lab_2
             this.SaveButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ProgramRB = new System.Windows.Forms.RadioButton();
+            this.ManualRB = new System.Windows.Forms.RadioButton();
             this.label13 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -67,6 +69,8 @@ namespace MPM_Lab_2
             this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
             this.button1 = new System.Windows.Forms.Button();
             this.Clock = new System.Windows.Forms.Timer(this.components);
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Reset = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -83,6 +87,7 @@ namespace MPM_Lab_2
             this.Command.Multiline = true;
             this.Command.Name = "Command";
             this.Command.PlaceholderText = "Enter the value";
+            this.Command.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Command.Size = new System.Drawing.Size(152, 84);
             this.Command.TabIndex = 0;
             // 
@@ -98,7 +103,7 @@ namespace MPM_Lab_2
             // 
             // StartButton
             // 
-            this.StartButton.Location = new System.Drawing.Point(6, 415);
+            this.StartButton.Location = new System.Drawing.Point(6, 391);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(95, 23);
             this.StartButton.TabIndex = 2;
@@ -127,6 +132,8 @@ namespace MPM_Lab_2
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ProgramRB);
+            this.groupBox1.Controls.Add(this.ManualRB);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.textBox6);
             this.groupBox1.Controls.Add(this.label12);
@@ -153,6 +160,28 @@ namespace MPM_Lab_2
             this.groupBox1.Size = new System.Drawing.Size(200, 450);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
+            // 
+            // ProgramRB
+            // 
+            this.ProgramRB.AutoSize = true;
+            this.ProgramRB.Checked = true;
+            this.ProgramRB.Location = new System.Drawing.Point(107, 419);
+            this.ProgramRB.Name = "ProgramRB";
+            this.ProgramRB.Size = new System.Drawing.Size(71, 19);
+            this.ProgramRB.TabIndex = 34;
+            this.ProgramRB.TabStop = true;
+            this.ProgramRB.Text = "Program";
+            this.ProgramRB.UseVisualStyleBackColor = true;
+            // 
+            // ManualRB
+            // 
+            this.ManualRB.AutoSize = true;
+            this.ManualRB.Location = new System.Drawing.Point(6, 419);
+            this.ManualRB.Name = "ManualRB";
+            this.ManualRB.Size = new System.Drawing.Size(65, 19);
+            this.ManualRB.TabIndex = 33;
+            this.ManualRB.Text = "Manual";
+            this.ManualRB.UseVisualStyleBackColor = true;
             // 
             // label13
             // 
@@ -273,7 +302,7 @@ namespace MPM_Lab_2
             // 
             // StopButton
             // 
-            this.StopButton.Location = new System.Drawing.Point(107, 415);
+            this.StopButton.Location = new System.Drawing.Point(107, 391);
             this.StopButton.Name = "StopButton";
             this.StopButton.Size = new System.Drawing.Size(87, 23);
             this.StopButton.TabIndex = 8;
@@ -301,10 +330,12 @@ namespace MPM_Lab_2
             // 
             // numericUpDown1
             // 
+            this.numericUpDown1.DecimalPlaces = 2;
             this.numericUpDown1.Location = new System.Drawing.Point(90, 27);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(115, 23);
             this.numericUpDown1.TabIndex = 10;
+            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -326,10 +357,12 @@ namespace MPM_Lab_2
             // 
             // numericUpDown3
             // 
+            this.numericUpDown3.DecimalPlaces = 2;
             this.numericUpDown3.Location = new System.Drawing.Point(90, 157);
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(115, 23);
             this.numericUpDown3.TabIndex = 16;
+            this.numericUpDown3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 
@@ -342,17 +375,21 @@ namespace MPM_Lab_2
             // 
             // numericUpDown4
             // 
+            this.numericUpDown4.DecimalPlaces = 2;
             this.numericUpDown4.Location = new System.Drawing.Point(90, 128);
             this.numericUpDown4.Name = "numericUpDown4";
             this.numericUpDown4.Size = new System.Drawing.Size(115, 23);
             this.numericUpDown4.TabIndex = 14;
+            this.numericUpDown4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // numericUpDown2
             // 
+            this.numericUpDown2.DecimalPlaces = 2;
             this.numericUpDown2.Location = new System.Drawing.Point(90, 71);
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(115, 23);
             this.numericUpDown2.TabIndex = 18;
+            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -374,10 +411,12 @@ namespace MPM_Lab_2
             // 
             // numericUpDown5
             // 
+            this.numericUpDown5.DecimalPlaces = 2;
             this.numericUpDown5.Location = new System.Drawing.Point(90, 186);
             this.numericUpDown5.Name = "numericUpDown5";
             this.numericUpDown5.Size = new System.Drawing.Size(115, 23);
             this.numericUpDown5.TabIndex = 20;
+            this.numericUpDown5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label6
             // 
@@ -390,10 +429,12 @@ namespace MPM_Lab_2
             // 
             // numericUpDown6
             // 
+            this.numericUpDown6.DecimalPlaces = 2;
             this.numericUpDown6.Location = new System.Drawing.Point(90, 272);
             this.numericUpDown6.Name = "numericUpDown6";
             this.numericUpDown6.Size = new System.Drawing.Size(115, 23);
             this.numericUpDown6.TabIndex = 24;
+            this.numericUpDown6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label7
             // 
@@ -406,10 +447,12 @@ namespace MPM_Lab_2
             // 
             // numericUpDown7
             // 
+            this.numericUpDown7.DecimalPlaces = 2;
             this.numericUpDown7.Location = new System.Drawing.Point(90, 243);
             this.numericUpDown7.Name = "numericUpDown7";
             this.numericUpDown7.Size = new System.Drawing.Size(115, 23);
             this.numericUpDown7.TabIndex = 22;
+            this.numericUpDown7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button1
             // 
@@ -424,11 +467,32 @@ namespace MPM_Lab_2
             // 
             this.Clock.Tick += new System.EventHandler(this.Clock_Tick);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(90, 328);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(115, 23);
+            this.textBox1.TabIndex = 35;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // Reset
+            // 
+            this.Reset.Location = new System.Drawing.Point(12, 415);
+            this.Reset.Name = "Reset";
+            this.Reset.Size = new System.Drawing.Size(75, 23);
+            this.Reset.TabIndex = 36;
+            this.Reset.Text = "Reset";
+            this.Reset.UseVisualStyleBackColor = true;
+            this.Reset.Click += new System.EventHandler(this.Reset_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(470, 450);
+            this.Controls.Add(this.Reset);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.numericUpDown6);
@@ -502,6 +566,10 @@ namespace MPM_Lab_2
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer Clock;
+        private System.Windows.Forms.RadioButton ProgramRB;
+        private System.Windows.Forms.RadioButton ManualRB;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button Reset;
     }
 }
 

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MRM_Class_Lib;
+using MRM_Class_Lib.Parser;
 
 namespace MPM_Lab_2
 {
@@ -21,7 +22,10 @@ namespace MPM_Lab_2
             Clock.Start();
         }
 
-        private MRM_Instruction Instruction;
+        private MRM_Instruction Program_Instruction;
+        private MRM_Instruction Manual_Instruction;
+
+        bool ProgramOperatingMode => ProgramRB.Checked;
 
         private void IdentifyButton_Click(object sender, EventArgs e)
         {
@@ -34,14 +38,14 @@ namespace MPM_Lab_2
             else
             {
                 Good();
-                Instruction = instructions;
+                Program_Instruction = instructions;
             }
         }
 
         private void EditButton_Click(object sender, EventArgs e)
         {
             Waiting();
-            Instruction = null;
+            Program_Instruction = null;
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -55,7 +59,10 @@ namespace MPM_Lab_2
             {
                 using (var Stream = new StreamWriter(Dialog.FileName))
                 {
-                    Stream.WriteLine(Instruction.ToPrint());
+                    if(ProgramOperatingMode)
+                         Stream.WriteLine(Program_Instruction.ToPrint());
+                    else
+                        Stream.WriteLine(Manual_Instruction.ToPrint());
                 }
             }
         }
@@ -79,18 +86,23 @@ namespace MPM_Lab_2
 
         private void Clock_Tick(object sender, EventArgs e)
         {
-            short
-                X = (short)MRM_IO.PortIn(MRM_IO.DOSAdress),
-                Y = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 1),
-                C = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 2),
-                U1 = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 3),
-                U2 = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 4);
+            double
+                  X = (short)MRM_IO.PortIn(MRM_IO.DOSAdress) / 1000.0,
+                  Y = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 1) / 1000.0,
+                  C = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 2) / 1000.0,
+                  U1 = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 3) / 1000.0,
+                  U2 = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 4) / 1000.0;
 
             ShowX.Text = $"{X,5:F2}";
             ShowY.Text = $"{Y,5:F2}";
             ShowZx.Text = $"{C,5:F2}";
             ShowU1.Text = $"{U1,5:F2}";
             ShowU2.Text = $"{U2,5:F2}";
+        }
+
+        private void Reset_Click(object sender, EventArgs e)
+        {
+            MRM_IO.IOClear();
         }
     }
 }

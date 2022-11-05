@@ -12,8 +12,8 @@ namespace MPM_Lab_2
     {
         static void MPM()
         {
-            MRM.MRMCreate();
-            MRM_IO.IOOpen(0x300);
+            
+            MRM_IO.IOOpen(MRM_IO.BaseAdress);
             MRM_IO.IOClear();
             MRM_Drive.PrivodInit(2, 100);
             MRM_Drive.PrivodCreate(
@@ -52,6 +52,7 @@ namespace MPM_Lab_2
                   1.0
                 );
 
+            MRM.MRMCreate();
             MRM.MRMSetON();
             MRM.Init_Connection();
         }
@@ -67,7 +68,7 @@ namespace MPM_Lab_2
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
         }
-
+        [STAThread]
         static void Main()
         {
             MPM();

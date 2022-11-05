@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
-namespace MRM_Class_Lib
+namespace MRM_Class_Lib.Parser
 {
     public enum MRM_Command_Enum
     {
@@ -27,6 +27,7 @@ namespace MRM_Class_Lib
         public MRM_Command_Enum Command { get; private set; }
         public bool Error => Command == MRM_Command_Enum.Error;
         public double Value { get; set; }
+        public bool Last { get; private set; }
 
         public string ToPrint()
         {
@@ -117,7 +118,10 @@ namespace MRM_Class_Lib
                     else if (command == "M04")
                         Result.Command = MRM_Command_Enum.DisableManipulator;
                     else if (command == "M02")
+                    {
                         Result.Command = MRM_Command_Enum.StopProgram;
+                        Result.Last = true;
+                    }
                     return Result;
                 default:
                     return Result;

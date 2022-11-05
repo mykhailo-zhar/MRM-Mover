@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
-namespace MRM_Class_Lib
+namespace MRM_Class_Lib.Parser
 {
     public class MRM_Frame
     {
         public uint FrameNum { get; private set; } = 0;
         public bool Error => FrameNum == 0;
+        public bool Last { get; internal set; } = false;
         public List<MRM_Command> Commands { get; private set; } = new List<MRM_Command>();
         //TODO: Представление кадра в виде чисел
 
@@ -48,11 +49,14 @@ namespace MRM_Class_Lib
             }
 
             List<MRM_Command> list = new List<MRM_Command>();
+            bool last = false;
 
             for (int i = 1; i < frame_commands.Length; i++)
             {
-                list.Add(MRM_Command.ProcessString(frame_commands[i]));
-                if (list.Last().Error)
+                var command = MRM_Command.ProcessString(frame_commands[i]);
+                list.Add(command);
+                if (command.Last) { last = true; break; }
+                if (command.Error)
                 {
                     return new MRM_Frame();
                 }
@@ -60,7 +64,8 @@ namespace MRM_Class_Lib
 
             return new MRM_Frame { 
                 FrameNum = num,
-                Commands = list
+                Commands = list,
+                Last = last
             };
         }
     }

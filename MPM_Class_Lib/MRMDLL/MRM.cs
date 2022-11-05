@@ -44,14 +44,15 @@ namespace MRM_Class_Lib
         private static void MRM_Timing(object target)
         {
 
-            short
-                  X = (short)MRM_IO.PortIn(MRM_IO.DOSAdress),
-                  Y = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 1),
-                  C = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 2),
-                  U1 = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 3),
-                  U2 = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 4);
+            double
+                  X = (short)MRM_IO.PortIn(MRM_IO.DOSAdress) / 1000.0,
+                  Y = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 1) / 1000.0,
+                  C = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 2) / 1000.0,
+                  U1 = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 3) / 1000.0,
+                  U2 = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 4) / 1000.0;
 
-            MRMSetAll(C, U1, U2, X, Y);
+
+            MRMSetAll(C, U1, U2, Y, X);
         }
 
         private static Timer Timer;
