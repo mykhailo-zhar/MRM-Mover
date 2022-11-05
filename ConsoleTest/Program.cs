@@ -50,7 +50,7 @@ namespace ConsoleTest
 
         static void MovIng()
         {
-            var to_move = new MRM_Command_Processor(1.0, 10.0, 90.0, 1.0);
+            var to_move = new Movement_Processor(1.0, 10.0, 90.0, 1.0);
             for (int i = 0; i < 1000; i++)
             {
                 to_move.Move();
@@ -62,7 +62,10 @@ namespace ConsoleTest
         static void Main(string[] args)
         {
 
-            MovIng();
+            for (double i = 0; i < 10.0; i+=0.1)
+            {
+                Console.WriteLine($"{(int)i}");
+            }
         }
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 using MRM_Class_Lib;
@@ -73,8 +73,9 @@ namespace MPM_Lab_2
         {
             MPM();
             App();
-            MRM.Close_Connection();
             MRM_IO.IOClose();
+            MRM.Working = false;
+            
         }
     }
 }

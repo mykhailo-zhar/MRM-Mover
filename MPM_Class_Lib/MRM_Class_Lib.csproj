@@ -61,14 +61,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command parsing\MRM_Command.cs" />
+    <Compile Include="Command parsing\MRM_Instruction_Executer.cs" />
     <Compile Include="MRMDLL\MRM_Drive.cs" />
     <Compile Include="MRMDLL\MRM_IO.cs" />
     <Compile Include="MRMDLL\MRM.cs" />
     <Compile Include="Command parsing\MRM_Frame.cs" />
     <Compile Include="Command parsing\MRM_Instruction.cs" />
-    <Compile Include="MRM_Command_Processor.cs" />
+    <Compile Include="Movement_Processor.cs" />
     <Compile Include="Geometry_Processor.cs" />
+    <Compile Include="MRM_Parallel_Data.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Technology_Processor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

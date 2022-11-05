@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MRM_Class_Lib
 {
-    public class MRM_Command_Processor
+    public class Movement_Processor
     {
         /// <summary>
         /// Инициализация обработчика для перемещения
@@ -15,7 +15,7 @@ namespace MRM_Class_Lib
         /// <param name="Speed">Требуемая скорость в мм/сек</param>
         /// <param name="Distance">Требуемое расстояние в мм</param>
         /// <param name="Modifier">Коэффициент перевода</param>
-        public MRM_Command_Processor(double Acceleration, double Speed, double Distance, double Modifier = 1000.0)
+        public Movement_Processor(double Acceleration, double Speed, double Distance, double Modifier = 1000.0)
         {
             this.Acceleration = Acceleration * Modifier;
             this.Speed = Speed * Modifier;
