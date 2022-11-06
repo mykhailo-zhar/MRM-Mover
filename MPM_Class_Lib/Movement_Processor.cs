@@ -23,14 +23,19 @@ namespace MRM_Class_Lib
             Direction = Distance >= 0 ? 1.0 : -1.0;
 
             this.Distance = Math.Abs(Distance) * Modifier;
+            this.Modifier = Modifier;
+
+            Imposibble = Speed == 0 || Acceleration == 0;
         }
+
+        double Modifier;
 
         public double Acceleration { get; private set; }
         public double Speed { get; private set; }
         public double CurrentSpeed { get; private set; } = 0;
         public double Distance { get; private set; }
         public double CurrentDistance { get; private set; } = 0;
-        public bool Completed => CurrentDistance == Distance;
+        public bool Completed => CurrentDistance == Distance && CurrentSpeed == 0 || Imposibble;
 
         private double BrakingDistance = 0;
         private double Direction = 0;
@@ -38,6 +43,7 @@ namespace MRM_Class_Lib
 
 
         private bool Braking = false;
+        private bool Imposibble = false;
 
         public void Move()
         {
@@ -81,9 +87,8 @@ namespace MRM_Class_Lib
                     CurrentSpeed = Direction * Math.Abs(Math.Abs(CurrentDistance) - Math.Abs(Distance));
                 }
             }
-
             CurrentDistance += Math.Abs(CurrentSpeed);
-
+           
         }
     }
 }

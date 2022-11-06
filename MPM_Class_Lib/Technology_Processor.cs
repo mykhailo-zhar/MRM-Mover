@@ -11,27 +11,62 @@ namespace MRM_Class_Lib
     {
         public Technology_Processor(int Period = 100)
         {
-            var actions = new Action[]
-               {
-                    Write_X,
-                    Write_Y,
-                    Write_Uz,
-                    Write_U1,
-                    Write_U2
-               };
-            var threads = new Thread[5];
+            threads = new Thread[5];
+
+           
+            threads[0] = new Thread(() => {
+                MRM_Parallel_Data.Log(GetType().Name, Message: "Started");
+                while (MRM_Parallel_Data.ProgramWorking)
+                {
+                    Write_X(); Thread.Sleep(Period);
+                }
+                MRM_Parallel_Data.Log(GetType().Name);
+            });
+            threads[1] = new Thread(() => {
+                MRM_Parallel_Data.Log(GetType().Name, Message: "Started");
+                while (MRM_Parallel_Data.ProgramWorking)
+                {
+                    Write_Y(); Thread.Sleep(Period);
+                }
+                MRM_Parallel_Data.Log(GetType().Name);
+            });
+           threads[2] = new Thread(() => {
+               MRM_Parallel_Data.Log(GetType().Name, Message: "Started");
+               while (MRM_Parallel_Data.ProgramWorking)
+                {
+                    Write_Uz(); Thread.Sleep(Period);
+                }
+               MRM_Parallel_Data.Log(GetType().Name);
+           });
+            threads[3] = new Thread(() => {
+                MRM_Parallel_Data.Log(GetType().Name, Message: "Started");
+                while (MRM_Parallel_Data.ProgramWorking)
+                {
+                    Write_U1(); Thread.Sleep(Period);
+                }
+                MRM_Parallel_Data.Log(GetType().Name);
+            });
+            threads[4] = new Thread(() => {
+                MRM_Parallel_Data.Log(GetType().Name, Message: "Started");
+                while (MRM_Parallel_Data.ProgramWorking)
+                {
+                    Write_U2(); Thread.Sleep(Period);
+                }
+                MRM_Parallel_Data.Log(GetType().Name);
+            });
+
             for (int i = 0; i < 5; i++)
             {
                 events[i] = new AutoResetEvent(false);
-                threads[i] = new Thread(() => { while (MRM_Parallel_Data.ProgramWorking) { actions[i].Invoke(); Thread.Sleep(100); } });
                 threads[i].Start();
             }
 
-            new Thread(() =>
+            MainThread = new Thread(() =>
             {
+                MRM_Parallel_Data.Log(GetType().Name, true, "Started");
                 while (MRM_Parallel_Data.ProgramWorking)
                 {
-                    //TODO: События на начало обработки
+                    //События на начало обработки
                     MRM_Parallel_Data.GEOM_TECH_ControlEvent.WaitOne();
                     if (MRM_Parallel_Data.Failure) continue;
                     TestFailure();
@@ -39,17 +74,26 @@ namespace MRM_Class_Lib
                     if (MRM_Parallel_Data.Failure) continue;
                     Write_Grep();
 
-                    for (int i = 0; i < 5; i++)
-                    {
-                        events[i].Set();
-                    }
+                    var x = MRM_Parallel_Data.X; if (x != 0) events[0].Set();
+                    var y = MRM_Parallel_Data.Y; if (y != 0) events[1].Set();
+                    var uz = MRM_Parallel_Data.Uz; if (uz != 0) events[2].Set();
+                    var u1 = MRM_Parallel_Data.U1; if (u1 != 0) events[3].Set();
+                    var u2 = MRM_Parallel_Data.U2; if (u2 != 0) events[4].Set();
+
+
+
                     MRM_Parallel_Data.TECH_GEOM_ControlEvent.Set();
+                    MRM_Parallel_Data.TECH_CONS_ControlEvent.Set();
                     Thread.Sleep(Period);
                 }
-
-            }).Start();
+                MRM_Parallel_Data.Log(GetType().Name, true);
+            });
+            MainThread.Start();
            
         }
+
+        Thread MainThread;
+        Thread[] threads;
 
         AutoResetEvent[] events = new AutoResetEvent[5];
         private void TestFailure()
@@ -104,7 +148,13 @@ namespace MRM_Class_Lib
                 (int)MRM_Parallel_Data.U2
             );
         }
-
+        public void Abort()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                events[i].Set();
+            }
+        }
 
     }
 }

@@ -12,45 +12,49 @@ namespace MPM_Lab_2
     {
         static void MPM()
         {
-            
+
+            double Rotations = 1.0;
+            double MM = 100.0;
+
             MRM_IO.IOOpen(MRM_IO.BaseAdress);
             MRM_IO.IOClear();
-            MRM_Drive.PrivodInit(2, 100);
+            MRM_Drive.PrivodInit(2, 1000);
             MRM_Drive.PrivodCreate(
                   MRM_IO.BaseAdress,
                   MRM_IO.CAPAdress,
                   MRM_IO.DOSAdress,
-                  10.0,
-                  1.0
+                  Rotations,
+                  MM
                 );
             MRM_Drive.PrivodCreate(
                   MRM_IO.BaseAdress,
                   (short)(MRM_IO.CAPAdress + 1),
                   (short)(MRM_IO.DOSAdress + 1),
-                  10.0,
-                  1.0
+                  Rotations,
+                  MM
                 );
             MRM_Drive.PrivodCreate(
                   MRM_IO.BaseAdress,
                   (short)(MRM_IO.CAPAdress + 2),
                   (short)(MRM_IO.DOSAdress + 2),
-                  10.0,
-                  1.0
+                 Rotations,
+                  MM
                 );
             MRM_Drive.PrivodCreate(
                   MRM_IO.BaseAdress,
                   (short)(MRM_IO.CAPAdress + 3),
                   (short)(MRM_IO.DOSAdress + 3),
-                  10.0,
-                  1.0
+                  Rotations,
+                  MM
                 );
             MRM_Drive.PrivodCreate(
                   MRM_IO.BaseAdress,
                   (short)(MRM_IO.CAPAdress + 4),
                   (short)(MRM_IO.DOSAdress + 4),
-                  10.0,
-                  1.0
+                  Rotations,
+                  MM
                 );
+
 
             //MRM.MRMCreate();
             //MRM.MRMSetON();
@@ -72,10 +76,9 @@ namespace MPM_Lab_2
         static void Main()
         {
             MPM();
+
             App();
-            MRM_IO.IOClose();
-            //MRM.Working = false;
-            
+            MRM_Parallel_Data.Log("Main", true);
         }
     }
 }

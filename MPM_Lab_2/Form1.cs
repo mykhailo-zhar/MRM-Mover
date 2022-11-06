@@ -86,6 +86,11 @@ namespace MPM_Lab_2
 
         private void Clock_Tick(object sender, EventArgs e)
         {
+            if(MRM_Parallel_Data.Instruction != null &&
+                MRM_Parallel_Data.Instruction.Completed && 
+                StopButton.Enabled
+                ) { StopButton_Click(sender, e); }
+
             double
                   X = (short)MRM_IO.PortIn(MRM_IO.DOSAdress) / 1000.0,
                   Y = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 1) / 1000.0,
@@ -110,14 +115,19 @@ namespace MPM_Lab_2
 
         private void StartButton_Click(object sender, EventArgs e)
         {
-            //TODO: После старта можно активировать кнопку Stop. Rb, Edit, Load, Start  выключаются.
+            //После старта можно активировать кнопку Stop. Rb, Edit, Load, Start  выключаются.
             StartStop();
+            if(Program_Instruction.Completed) { Program_Instruction.ResetInstruction(); }
+            MRM_Parallel_Data.Instruction = Program_Instruction;
+            MRM_Parallel_Data.CONS_GEOM_ControlEvent.Set();
         }
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-            //TODO: После стопа активировать кнопки Rb, Edit, Load, Start. Деактивировать кнопку Stop
+            MRM_Parallel_Data.TECH_CONS_ControlEvent.WaitOne();
+            //После стопа активировать кнопки Rb, Edit, Load, Start. Деактивировать кнопку Stop
             StartStop(false);
+            MRM_Parallel_Data.CONS_GEOM_ControlEvent.Reset();
         }
 
         private void Grep_Click(object sender, EventArgs e)
@@ -128,6 +138,13 @@ namespace MPM_Lab_2
         private void RB_CheckedChanged(object sender, EventArgs e)
         {
             //
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MRM_IO.IOClose();
+            MRM_Parallel_Data.Abort();
+            MRM.Working = false;
         }
     }
 }

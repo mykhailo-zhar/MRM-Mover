@@ -13,7 +13,7 @@ namespace MRM_Class_Lib
         public static short BaseAdress = 0x300;
         public static short GrepAdress = (short)(BaseAdress + 2);
         public static short CAPAdress => (short)(BaseAdress + 6);
-        public static short DOSAdress => (short)(BaseAdress + 12);
+        public static short DOSAdress => (short)(BaseAdress + 11);
 
         [DllImport("MRM_IO.dll")]
         public static extern void IOOpen(int BaseAdr);

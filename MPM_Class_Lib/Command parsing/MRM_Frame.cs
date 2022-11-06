@@ -13,9 +13,7 @@ namespace MRM_Class_Lib.Parser
         public bool Error => FrameNum == 0;
         public bool Last { get; internal set; } = false;
         public List<MRM_Command> Commands { get; private set; } = new List<MRM_Command>();
-        //TODO: Представление кадра в виде чисел
 
-        //TODO: Функция ускорения торможения для перемещения и вращения 
         private MRM_Frame() { }
         public string ToPrint()
         {
