@@ -12,7 +12,7 @@ namespace MRM_Class_Lib.Parser
     public class MRM_Instruction_Executer
     {
         public double Acceleration { get; set; } = 10.0;
-        public MRM_Instruction Instruction { get; set; }
+        MRM_Instruction Instruction;
         public MP MCP_X { get; private set; }
         public MP MCP_Y { get; private set; }
         public MP MCP_Uz { get; private set; }
@@ -40,7 +40,12 @@ namespace MRM_Class_Lib.Parser
                (MCP_U2 == null);
 
 
-
+        public void SetInstruction(MRM_Instruction instruction)
+        {
+            DeleteCurrentMovementProcessors();
+            Instruction = instruction;
+        }
+        public void DeleteInstruction() => Instruction = null;
         private void ProcessInstruction(MRM_Frame Frame)
         {
             double Speed = 0.0,
@@ -137,5 +142,7 @@ namespace MRM_Class_Lib.Parser
                 DeleteCurrentMovementProcessors();
             }
         }
+
+        public string ToPrint() => Instruction.ToPrint();
     }
 }

@@ -12,7 +12,6 @@ namespace MRM_Class_Lib
     public static class MRM_Parallel_Data
     {
         public static bool Active_Grep { get; set; }
-
         public static double X { get; set; }
         public static double Y { get; set; }
         public static double Uz { get; set; }
@@ -22,7 +21,9 @@ namespace MRM_Class_Lib
 
         public static MRM_Instruction_Executer Instruction { get; set; }
 
-        public static ManualResetEvent GeometryControlEvent;
+        public static ManualResetEvent CONS_GEOM_ControlEvent = new ManualResetEvent(false);
+        public static AutoResetEvent GEOM_TECH_ControlEvent = new AutoResetEvent(false);
+        public static AutoResetEvent TECH_GEOM_ControlEvent = new AutoResetEvent(true);
 
         public static bool ProgramWorking = true;
     }

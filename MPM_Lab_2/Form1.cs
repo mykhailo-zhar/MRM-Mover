@@ -22,30 +22,30 @@ namespace MPM_Lab_2
             Clock.Start();
         }
 
-        private MRM_Instruction Program_Instruction;
-        private MRM_Instruction Manual_Instruction;
+        private MRM_Instruction_Executer Program_Instruction = new MRM_Instruction_Executer();
+        private MRM_Instruction_Executer Manual_Instruction = new MRM_Instruction_Executer();
 
         bool ProgramOperatingMode => ProgramRB.Checked;
 
         private void IdentifyButton_Click(object sender, EventArgs e)
         {
-            var instructions = MRM_Instruction.ProcessString(Command.Text);
+            var instruction = MRM_Instruction.ProcessString(Command.Text);
 
-            if (instructions.Error)
+            if (instruction.Error)
             {
                 Bad();
             }
             else
             {
                 Good();
-                Program_Instruction = instructions;
+                Program_Instruction.SetInstruction(instruction);
             }
         }
 
         private void EditButton_Click(object sender, EventArgs e)
         {
             Waiting();
-            Program_Instruction = null;
+            Program_Instruction.DeleteInstruction();
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -93,16 +93,41 @@ namespace MPM_Lab_2
                   U1 = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 3) / 1000.0,
                   U2 = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 4) / 1000.0;
 
+            bool Grep = MRM_IO.PortIn(MRM_IO.GrepAdress) == 1;
+
             ShowX.Text = $"{X,5:F2}";
             ShowY.Text = $"{Y,5:F2}";
             ShowZx.Text = $"{C,5:F2}";
             ShowU1.Text = $"{U1,5:F2}";
             ShowU2.Text = $"{U2,5:F2}";
+            ShowGrep.BackColor = Grep ? Color.ForestGreen : Color.IndianRed;
         }
 
         private void Reset_Click(object sender, EventArgs e)
         {
             MRM_IO.IOClear();
+        }
+
+        private void StartButton_Click(object sender, EventArgs e)
+        {
+            //TODO: После старта можно активировать кнопку Stop. Rb, Edit, Load, Start  выключаются.
+            StartStop();
+        }
+
+        private void StopButton_Click(object sender, EventArgs e)
+        {
+            //TODO: После стопа активировать кнопки Rb, Edit, Load, Start. Деактивировать кнопку Stop
+            StartStop(false);
+        }
+
+        private void Grep_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RB_CheckedChanged(object sender, EventArgs e)
+        {
+            //
         }
     }
 }

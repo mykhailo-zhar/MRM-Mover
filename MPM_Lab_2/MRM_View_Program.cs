@@ -52,9 +52,9 @@ namespace MPM_Lab_2
                   1.0
                 );
 
-            MRM.MRMCreate();
-            MRM.MRMSetON();
-            MRM.Init_Connection();
+            //MRM.MRMCreate();
+            //MRM.MRMSetON();
+            //MRM.Init_Connection();
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace MPM_Lab_2
             MPM();
             App();
             MRM_IO.IOClose();
-            MRM.Working = false;
+            //MRM.Working = false;
             
         }
     }

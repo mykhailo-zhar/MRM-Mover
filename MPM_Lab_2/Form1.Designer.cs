@@ -39,7 +39,7 @@ namespace MPM_Lab_2
             this.ProgramRB = new System.Windows.Forms.RadioButton();
             this.ManualRB = new System.Windows.Forms.RadioButton();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.ShowGrep = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -67,9 +67,8 @@ namespace MPM_Lab_2
             this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Grep = new System.Windows.Forms.Button();
             this.Clock = new System.Windows.Forms.Timer(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.Reset = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -109,6 +108,7 @@ namespace MPM_Lab_2
             this.StartButton.TabIndex = 2;
             this.StartButton.Text = "Start";
             this.StartButton.UseVisualStyleBackColor = true;
+            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
             // SaveButton
             // 
@@ -135,7 +135,7 @@ namespace MPM_Lab_2
             this.groupBox1.Controls.Add(this.ProgramRB);
             this.groupBox1.Controls.Add(this.ManualRB);
             this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.textBox6);
+            this.groupBox1.Controls.Add(this.ShowGrep);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label11);
@@ -172,6 +172,7 @@ namespace MPM_Lab_2
             this.ProgramRB.TabStop = true;
             this.ProgramRB.Text = "Program";
             this.ProgramRB.UseVisualStyleBackColor = true;
+            this.ProgramRB.CheckedChanged += new System.EventHandler(this.RB_CheckedChanged);
             // 
             // ManualRB
             // 
@@ -182,6 +183,7 @@ namespace MPM_Lab_2
             this.ManualRB.TabIndex = 33;
             this.ManualRB.Text = "Manual";
             this.ManualRB.UseVisualStyleBackColor = true;
+            this.ManualRB.CheckedChanged += new System.EventHandler(this.RB_CheckedChanged);
             // 
             // label13
             // 
@@ -192,13 +194,13 @@ namespace MPM_Lab_2
             this.label13.TabIndex = 32;
             this.label13.Text = "Grep:";
             // 
-            // textBox6
+            // ShowGrep
             // 
-            this.textBox6.Location = new System.Drawing.Point(68, 362);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(126, 23);
-            this.textBox6.TabIndex = 31;
+            this.ShowGrep.Location = new System.Drawing.Point(68, 362);
+            this.ShowGrep.Name = "ShowGrep";
+            this.ShowGrep.ReadOnly = true;
+            this.ShowGrep.Size = new System.Drawing.Size(126, 23);
+            this.ShowGrep.TabIndex = 31;
             // 
             // label12
             // 
@@ -308,6 +310,7 @@ namespace MPM_Lab_2
             this.StopButton.TabIndex = 8;
             this.StopButton.Text = "Stop";
             this.StopButton.UseVisualStyleBackColor = true;
+            this.StopButton.Click += new System.EventHandler(this.StopButton_Click);
             // 
             // Info
             // 
@@ -454,27 +457,19 @@ namespace MPM_Lab_2
             this.numericUpDown7.TabIndex = 22;
             this.numericUpDown7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // button1
+            // Grep
             // 
-            this.button1.Location = new System.Drawing.Point(90, 357);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 23);
-            this.button1.TabIndex = 26;
-            this.button1.Text = "Grep";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Grep.Location = new System.Drawing.Point(90, 361);
+            this.Grep.Name = "Grep";
+            this.Grep.Size = new System.Drawing.Size(115, 23);
+            this.Grep.TabIndex = 26;
+            this.Grep.Text = "Grep";
+            this.Grep.UseVisualStyleBackColor = true;
+            this.Grep.Click += new System.EventHandler(this.Grep_Click);
             // 
             // Clock
             // 
             this.Clock.Tick += new System.EventHandler(this.Clock_Tick);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(90, 328);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(115, 23);
-            this.textBox1.TabIndex = 35;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Reset
             // 
@@ -492,8 +487,7 @@ namespace MPM_Lab_2
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(470, 450);
             this.Controls.Add(this.Reset);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Grep);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.numericUpDown6);
             this.Controls.Add(this.label7);
@@ -563,12 +557,11 @@ namespace MPM_Lab_2
         private System.Windows.Forms.TextBox ShowY;
         private System.Windows.Forms.TextBox ShowX;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox ShowGrep;
+        private System.Windows.Forms.Button Grep;
         private System.Windows.Forms.Timer Clock;
         private System.Windows.Forms.RadioButton ProgramRB;
         private System.Windows.Forms.RadioButton ManualRB;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button Reset;
     }
 }

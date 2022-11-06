@@ -20,7 +20,7 @@ namespace MRM_Class_Lib.Parser
         {
             string result = "";
             if (Error) return result;
-            Frames.ToList().ForEach(p => result += p.ToPrint());
+            InstructionFrames.ForEach(p => result += p.ToPrint());
             return result;
         }
         public void Reset() => Frames = new Queue<MRM_Frame>(InstructionFrames);
@@ -34,6 +34,8 @@ namespace MRM_Class_Lib.Parser
                 .Select(p => MRM_Frame.ProcessString(p))
                 .OrderBy(p => p.FrameNum);
             ;
+
+            if (!instruction.Any()) return new MRM_Instruction();
 
             int i = 1;
             var instructions_list = new List<MRM_Frame>();

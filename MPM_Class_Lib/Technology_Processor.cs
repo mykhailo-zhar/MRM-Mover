@@ -23,7 +23,7 @@ namespace MRM_Class_Lib
             for (int i = 0; i < 5; i++)
             {
                 events[i] = new AutoResetEvent(false);
-                threads[i] = new Thread(() => { while (MRM_Parallel_Data.ProgramWorking) actions[i].Invoke(); });
+                threads[i] = new Thread(() => { while (MRM_Parallel_Data.ProgramWorking) { actions[i].Invoke(); Thread.Sleep(100); } });
                 threads[i].Start();
             }
 
@@ -32,6 +32,7 @@ namespace MRM_Class_Lib
                 while (MRM_Parallel_Data.ProgramWorking)
                 {
                     //TODO: События на начало обработки
+                    MRM_Parallel_Data.GEOM_TECH_ControlEvent.WaitOne();
                     if (MRM_Parallel_Data.Failure) continue;
                     TestFailure();
 
@@ -42,6 +43,7 @@ namespace MRM_Class_Lib
                     {
                         events[i].Set();
                     }
+                    MRM_Parallel_Data.TECH_GEOM_ControlEvent.Set();
                     Thread.Sleep(Period);
                 }
 
@@ -59,7 +61,7 @@ namespace MRM_Class_Lib
             MRM_Parallel_Data.Failure &= MRM_IO.PortIn(MRM_IO.DOSAdress + 4) == 1;
         }
         private void Write_Grep() => MRM_IO.PortOut(
-            MRM_IO.BaseAdress + 1,
+            MRM_IO.GrepAdress,
             MRM_Parallel_Data.Active_Grep ? 1 : 0
             );
         private void Write_X()

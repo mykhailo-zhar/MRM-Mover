@@ -13,29 +13,30 @@ namespace MPM_Lab_2
 
     public partial class Form1 : Form
     {
-        public void Good() { 
-            Info.BackColor = Color.Green;
-            SaveButton.Enabled = true;
-            StartButton.Enabled = true;
-            Command.ReadOnly = true;
-            IdentifyButton.Enabled = false;
-        }
-        public void Bad() {
-            Info.BackColor = Color.Red;
-            SaveButton.Enabled = false;
-            StartButton.Enabled = false;
-            Command.ReadOnly = false;
-            IdentifyButton.Enabled = true;
-        }
-        public void Waiting() { 
-            Info.BackColor = SystemColors.Control;
-            SaveButton.Enabled = false;
-            StartButton.Enabled = false;
-            Command.ReadOnly = false;
-            IdentifyButton.Enabled = true;
+        public void IdentifyChange(Color color, bool Enabled = true)
+        {
+            Info.BackColor = color;
+            SaveButton.Enabled = Enabled;
+            StartButton.Enabled = Enabled;
+            Command.ReadOnly = Enabled;
+            IdentifyButton.Enabled = !Enabled;
+            StopButton.Enabled = false;
         }
 
+        public void Good() => IdentifyChange(Color.ForestGreen, true);
+        public void Bad() => IdentifyChange(Color.IndianRed, false);
+        public void Waiting() => IdentifyChange(SystemColors.Control, false);
 
+        public void StartStop(bool Start = true)
+        {
+            StopButton.Enabled = Start;
+
+            StartButton.Enabled = !Start;
+            ManualRB.Enabled = !Start;
+            ProgramRB.Enabled = !Start;
+            LoadButton.Enabled = !Start;
+            EditButton.Enabled = !Start;
+        }
 
     }
 }

@@ -21,9 +21,12 @@ namespace MRM_Class_Lib
                     if (MRM_Parallel_Data.Failure) continue;
 
                     //TODO: Событие на сигнал остановки/продолжения
+                    MRM_Parallel_Data.CONS_GEOM_ControlEvent.WaitOne();
                     //TODO: Событие на сигнал об окончании 
+                    MRM_Parallel_Data.TECH_GEOM_ControlEvent.WaitOne();
                     MRM_Parallel_Data.Instruction.ProcessStep();
                     //TODO: передать управление ТЕХ процессу для движения
+                    MRM_Parallel_Data.GEOM_TECH_ControlEvent.Set();
 
                     Thread.Sleep(Period);
                 }

@@ -11,6 +11,7 @@ namespace MRM_Class_Lib
     public class MRM_IO
     {
         public static short BaseAdress = 0x300;
+        public static short GrepAdress = (short)(BaseAdress + 2);
         public static short CAPAdress => (short)(BaseAdress + 6);
         public static short DOSAdress => (short)(BaseAdress + 12);
 
