@@ -12,18 +12,18 @@ namespace MRM_Class_Lib
 {
     public static class MRM_Parallel_Data
     {
-        public static bool Active_Grep => Instruction.Active_Grep; 
-        public static double X => Instruction.X ?? 0;
-        public static double Y => Instruction.Y ?? 0;
-        public static double Uz => Instruction.Uz ?? 0;
-        public static double U1 => Instruction.U1 ?? 0;
-        public static double U2 => Instruction.U2 ?? 0;
+        public static bool Active_Grep => Instruction?.Active_Grep ?? false; 
+        public static double X => Instruction?.X ?? 0.0;
+        public static double Y => Instruction?.Y ?? 0.0;
+        public static double Uz => Instruction?.Uz ?? 0.0;
+        public static double U1 => Instruction?.U1 ?? 0.0;
+        public static double U2 => Instruction?.U2 ?? 0.0;
         public static bool Failure { get; set; }
 
         static Geometry_Processor GP = new Geometry_Processor();
         static Technology_Processor TP = new Technology_Processor();
 
-        public static MRM_Instruction_Executer Instruction { get; set; }
+        public static IInstructionExecuter Instruction { get; set; }
 
         public static ManualResetEvent CONS_GEOM_ControlEvent = new ManualResetEvent(false);
         public static AutoResetEvent GEOM_TECH_ControlEvent = new AutoResetEvent(false);

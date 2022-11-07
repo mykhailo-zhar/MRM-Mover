@@ -13,8 +13,9 @@ namespace MRM_Class_Lib
         {
             threads = new Thread[5];
 
-           
-            threads[0] = new Thread(() => {
+
+            threads[0] = new Thread(() =>
+            {
                 MRM_Parallel_Data.Log(GetType().Name, Message: "Started");
                 while (MRM_Parallel_Data.ProgramWorking)
                 {
@@ -22,7 +23,8 @@ namespace MRM_Class_Lib
                 }
                 MRM_Parallel_Data.Log(GetType().Name);
             });
-            threads[1] = new Thread(() => {
+            threads[1] = new Thread(() =>
+            {
                 MRM_Parallel_Data.Log(GetType().Name, Message: "Started");
                 while (MRM_Parallel_Data.ProgramWorking)
                 {
@@ -30,15 +32,17 @@ namespace MRM_Class_Lib
                 }
                 MRM_Parallel_Data.Log(GetType().Name);
             });
-           threads[2] = new Thread(() => {
-               MRM_Parallel_Data.Log(GetType().Name, Message: "Started");
-               while (MRM_Parallel_Data.ProgramWorking)
+            threads[2] = new Thread(() =>
+            {
+                MRM_Parallel_Data.Log(GetType().Name, Message: "Started");
+                while (MRM_Parallel_Data.ProgramWorking)
                 {
                     Write_Uz(); Thread.Sleep(Period);
                 }
-               MRM_Parallel_Data.Log(GetType().Name);
-           });
-            threads[3] = new Thread(() => {
+                MRM_Parallel_Data.Log(GetType().Name);
+            });
+            threads[3] = new Thread(() =>
+            {
                 MRM_Parallel_Data.Log(GetType().Name, Message: "Started");
                 while (MRM_Parallel_Data.ProgramWorking)
                 {
@@ -46,7 +50,8 @@ namespace MRM_Class_Lib
                 }
                 MRM_Parallel_Data.Log(GetType().Name);
             });
-            threads[4] = new Thread(() => {
+            threads[4] = new Thread(() =>
+            {
                 MRM_Parallel_Data.Log(GetType().Name, Message: "Started");
                 while (MRM_Parallel_Data.ProgramWorking)
                 {
@@ -61,6 +66,18 @@ namespace MRM_Class_Lib
                 threads[i].Start();
             }
 
+            FailureThread = new Thread(() =>
+            {
+                MRM_Parallel_Data.Log(GetType().Name, Message: "Started");
+                while (MRM_Parallel_Data.ProgramWorking)
+                {
+                    TestFailure();
+                    Thread.Sleep(Period);
+                }
+                MRM_Parallel_Data.Log(GetType().Name);
+            });
+            FailureThread.Start();
+
             MainThread = new Thread(() =>
             {
                 MRM_Parallel_Data.Log(GetType().Name, true, "Started");
@@ -68,8 +85,6 @@ namespace MRM_Class_Lib
                 {
                     //События на начало обработки
                     MRM_Parallel_Data.GEOM_TECH_ControlEvent.WaitOne();
-                    if (MRM_Parallel_Data.Failure) continue;
-                    TestFailure();
 
                     if (MRM_Parallel_Data.Failure) continue;
                     Write_Grep();
@@ -89,20 +104,21 @@ namespace MRM_Class_Lib
                 MRM_Parallel_Data.Log(GetType().Name, true);
             });
             MainThread.Start();
-           
+
         }
 
         Thread MainThread;
+        Thread FailureThread;
         Thread[] threads;
 
         AutoResetEvent[] events = new AutoResetEvent[5];
         private void TestFailure()
         {
-            MRM_Parallel_Data.Failure &= MRM_IO.PortIn(MRM_IO.DOSAdress + 0) == 1;
-            MRM_Parallel_Data.Failure &= MRM_IO.PortIn(MRM_IO.DOSAdress + 1) == 1;
-            MRM_Parallel_Data.Failure &= MRM_IO.PortIn(MRM_IO.DOSAdress + 2) == 1;
-            MRM_Parallel_Data.Failure &= MRM_IO.PortIn(MRM_IO.DOSAdress + 3) == 1;
-            MRM_Parallel_Data.Failure &= MRM_IO.PortIn(MRM_IO.DOSAdress + 4) == 1;
+            MRM_Parallel_Data.Failure |= MRM_IO.PortIn(MRM_IO.DOSAdress + 0) == 1;
+            MRM_Parallel_Data.Failure |= MRM_IO.PortIn(MRM_IO.DOSAdress + 1) == 1;
+            MRM_Parallel_Data.Failure |= MRM_IO.PortIn(MRM_IO.DOSAdress + 2) == 1;
+            MRM_Parallel_Data.Failure |= MRM_IO.PortIn(MRM_IO.DOSAdress + 3) == 1;
+            MRM_Parallel_Data.Failure |= MRM_IO.PortIn(MRM_IO.DOSAdress + 4) == 1;
         }
         private void Write_Grep() => MRM_IO.PortOut(
             MRM_IO.GrepAdress,

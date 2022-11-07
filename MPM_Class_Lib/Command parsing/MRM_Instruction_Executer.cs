@@ -9,7 +9,19 @@ using MRM_Class_Lib;
 namespace MRM_Class_Lib.Parser
 {
     using MP = Movement_Processor;
-    public class MRM_Instruction_Executer
+    public interface IInstructionExecuter
+    {
+        double X { get; }
+        double Y { get; }
+        double Uz { get; }
+        double U1 { get; }
+        double U2 { get; }
+        bool Active_Grep { get; }
+        bool Completed { get; }
+        void ProcessStep();
+    }
+
+    public class MRM_Instruction_Executer: IInstructionExecuter
     {
         public double Acceleration { get; set; } = 0.01;
         MRM_Instruction Instruction;
@@ -20,11 +32,11 @@ namespace MRM_Class_Lib.Parser
         public MP MCP_U2 { get; private set; }
 
         public bool Active_Grep { get; private set; } = false;
-        public double? X => MCP_X?.CurrentSpeed;
-        public double? Y => MCP_Y?.CurrentSpeed;
-        public double? Uz => MCP_Uz?.CurrentSpeed;
-        public double? U1 => MCP_U1?.CurrentSpeed;
-        public double? U2 => MCP_U2?.CurrentSpeed;
+        public double X => MCP_X?.CurrentSpeed ?? 0.0;
+        public double Y => MCP_Y?.CurrentSpeed ?? 0.0;
+        public double Uz => MCP_Uz?.CurrentSpeed ?? 0.0;
+        public double U1 => MCP_U1?.CurrentSpeed ?? 0.0;
+        public double U2 => MCP_U2?.CurrentSpeed ?? 0.0;
         double Speed = 0.0,
                 Rotation_Speed = 0.0;
 

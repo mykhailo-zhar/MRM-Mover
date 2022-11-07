@@ -43,6 +43,19 @@ namespace MRM_Class_Lib
 
 
         public static bool Working = true;
+
+        public void MRMCHPU()
+        {
+            double
+                       X = (short)MRM_IO.PortIn(MRM_IO.DOSAdress) / 1000.0,
+                       Y = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 1) / 1000.0,
+                       C = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 2) / 10.0,
+                       U1 = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 3) / 10.0,
+                       U2 = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 4) / 10.0;
+
+            MRMSetAll(C, U1, U2, Y, X);
+        }
+
         public static void Init_Connection()
         {
             new Thread(() => {

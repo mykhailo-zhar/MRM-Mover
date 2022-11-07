@@ -28,7 +28,7 @@ namespace MRM_Class_Lib
                     MRM_Parallel_Data.TECH_GEOM_ControlEvent.WaitOne();
 
                     //Шаг прощёта геометрии
-                    MRM_Parallel_Data.Instruction.ProcessStep();
+                    if(MRM_Parallel_Data.Instruction != null) MRM_Parallel_Data.Instruction.ProcessStep();
 
                     //Передать управление ТЕХ процессу для движения
                     MRM_Parallel_Data.GEOM_TECH_ControlEvent.Set();

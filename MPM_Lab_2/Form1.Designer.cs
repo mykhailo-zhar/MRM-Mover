@@ -56,28 +56,28 @@ namespace MPM_Lab_2
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.UI_Y = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.UI_X = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.UI_Uz = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
+            this.UI_U2 = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
-            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
+            this.UI_U1 = new System.Windows.Forms.NumericUpDown();
             this.Grep = new System.Windows.Forms.Button();
             this.Clock = new System.Windows.Forms.Timer(this.components);
             this.Reset = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UI_Y)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UI_X)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UI_Uz)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UI_U2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UI_U1)).BeginInit();
             this.SuspendLayout();
             // 
             // Command
@@ -339,6 +339,7 @@ namespace MPM_Lab_2
             this.numericUpDown1.Size = new System.Drawing.Size(115, 23);
             this.numericUpDown1.TabIndex = 10;
             this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown1.Visible = false;
             // 
             // label1
             // 
@@ -348,6 +349,7 @@ namespace MPM_Lab_2
             this.label1.Size = new System.Drawing.Size(102, 15);
             this.label1.TabIndex = 11;
             this.label1.Text = "Movement speed:";
+            this.label1.Visible = false;
             // 
             // label3
             // 
@@ -358,14 +360,24 @@ namespace MPM_Lab_2
             this.label3.TabIndex = 17;
             this.label3.Text = "Y:";
             // 
-            // numericUpDown3
+            // UI_Y
             // 
-            this.numericUpDown3.DecimalPlaces = 2;
-            this.numericUpDown3.Location = new System.Drawing.Point(90, 157);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(115, 23);
-            this.numericUpDown3.TabIndex = 16;
-            this.numericUpDown3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.UI_Y.DecimalPlaces = 2;
+            this.UI_Y.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.UI_Y.Location = new System.Drawing.Point(90, 157);
+            this.UI_Y.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.UI_Y.Name = "UI_Y";
+            this.UI_Y.Size = new System.Drawing.Size(115, 23);
+            this.UI_Y.TabIndex = 16;
+            this.UI_Y.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 
@@ -376,14 +388,24 @@ namespace MPM_Lab_2
             this.label4.TabIndex = 15;
             this.label4.Text = "X:";
             // 
-            // numericUpDown4
+            // UI_X
             // 
-            this.numericUpDown4.DecimalPlaces = 2;
-            this.numericUpDown4.Location = new System.Drawing.Point(90, 128);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(115, 23);
-            this.numericUpDown4.TabIndex = 14;
-            this.numericUpDown4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.UI_X.DecimalPlaces = 2;
+            this.UI_X.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.UI_X.Location = new System.Drawing.Point(90, 128);
+            this.UI_X.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.UI_X.Name = "UI_X";
+            this.UI_X.Size = new System.Drawing.Size(115, 23);
+            this.UI_X.TabIndex = 14;
+            this.UI_X.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // numericUpDown2
             // 
@@ -393,6 +415,7 @@ namespace MPM_Lab_2
             this.numericUpDown2.Size = new System.Drawing.Size(115, 23);
             this.numericUpDown2.TabIndex = 18;
             this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown2.Visible = false;
             // 
             // label2
             // 
@@ -402,6 +425,7 @@ namespace MPM_Lab_2
             this.label2.Size = new System.Drawing.Size(89, 15);
             this.label2.TabIndex = 19;
             this.label2.Text = "Rotation speed:";
+            this.label2.Visible = false;
             // 
             // label5
             // 
@@ -412,14 +436,29 @@ namespace MPM_Lab_2
             this.label5.TabIndex = 21;
             this.label5.Text = "C:";
             // 
-            // numericUpDown5
+            // UI_Uz
             // 
-            this.numericUpDown5.DecimalPlaces = 2;
-            this.numericUpDown5.Location = new System.Drawing.Point(90, 186);
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(115, 23);
-            this.numericUpDown5.TabIndex = 20;
-            this.numericUpDown5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.UI_Uz.DecimalPlaces = 2;
+            this.UI_Uz.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.UI_Uz.Location = new System.Drawing.Point(90, 186);
+            this.UI_Uz.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.UI_Uz.Minimum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            -2147483648});
+            this.UI_Uz.Name = "UI_Uz";
+            this.UI_Uz.Size = new System.Drawing.Size(115, 23);
+            this.UI_Uz.TabIndex = 20;
+            this.UI_Uz.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label6
             // 
@@ -430,14 +469,29 @@ namespace MPM_Lab_2
             this.label6.TabIndex = 25;
             this.label6.Text = "U2:";
             // 
-            // numericUpDown6
+            // UI_U2
             // 
-            this.numericUpDown6.DecimalPlaces = 2;
-            this.numericUpDown6.Location = new System.Drawing.Point(90, 272);
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(115, 23);
-            this.numericUpDown6.TabIndex = 24;
-            this.numericUpDown6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.UI_U2.DecimalPlaces = 2;
+            this.UI_U2.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.UI_U2.Location = new System.Drawing.Point(90, 272);
+            this.UI_U2.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.UI_U2.Minimum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            -2147483648});
+            this.UI_U2.Name = "UI_U2";
+            this.UI_U2.Size = new System.Drawing.Size(115, 23);
+            this.UI_U2.TabIndex = 24;
+            this.UI_U2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label7
             // 
@@ -448,14 +502,29 @@ namespace MPM_Lab_2
             this.label7.TabIndex = 23;
             this.label7.Text = "U1:";
             // 
-            // numericUpDown7
+            // UI_U1
             // 
-            this.numericUpDown7.DecimalPlaces = 2;
-            this.numericUpDown7.Location = new System.Drawing.Point(90, 243);
-            this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(115, 23);
-            this.numericUpDown7.TabIndex = 22;
-            this.numericUpDown7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.UI_U1.DecimalPlaces = 2;
+            this.UI_U1.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.UI_U1.Location = new System.Drawing.Point(90, 243);
+            this.UI_U1.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.UI_U1.Minimum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            -2147483648});
+            this.UI_U1.Name = "UI_U1";
+            this.UI_U1.Size = new System.Drawing.Size(115, 23);
+            this.UI_U1.TabIndex = 22;
+            this.UI_U1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Grep
             // 
@@ -489,20 +558,20 @@ namespace MPM_Lab_2
             this.Controls.Add(this.Reset);
             this.Controls.Add(this.Grep);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.numericUpDown6);
+            this.Controls.Add(this.UI_U2);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.numericUpDown7);
+            this.Controls.Add(this.UI_U1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.numericUpDown5);
+            this.Controls.Add(this.UI_Uz);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.numericUpDown3);
+            this.Controls.Add(this.UI_Y);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.numericUpDown4);
+            this.Controls.Add(this.UI_X);
             this.Location = new System.Drawing.Point(1920, 0);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
@@ -511,12 +580,12 @@ namespace MPM_Lab_2
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UI_Y)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UI_X)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UI_Uz)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UI_U2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UI_U1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -536,17 +605,17 @@ namespace MPM_Lab_2
         private System.Windows.Forms.Button StopButton;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.NumericUpDown UI_Y;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.NumericUpDown UI_X;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
+        private System.Windows.Forms.NumericUpDown UI_Uz;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown numericUpDown6;
+        private System.Windows.Forms.NumericUpDown UI_U2;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.NumericUpDown numericUpDown7;
+        private System.Windows.Forms.NumericUpDown UI_U1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;

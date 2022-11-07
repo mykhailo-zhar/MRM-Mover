@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Command parsing\MRM_Command.cs" />
     <Compile Include="Command parsing\MRM_Instruction_Executer.cs" />
+    <Compile Include="Command parsing\MRM_Manual_Executer.cs" />
     <Compile Include="MRMDLL\MRM_Drive.cs" />
     <Compile Include="MRMDLL\MRM_IO.cs" />
     <Compile Include="MRMDLL\MRM.cs" />
