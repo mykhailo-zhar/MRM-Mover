@@ -99,7 +99,21 @@ namespace MPM_Lab_2
                 //player.URL = "Siren.mp3";
                 //player.controls.play();
                 MessageBox.Show("Движки в огне. ПОЛУНДРА! ЫЧА В ОГНЕ!", "АВАРИЯ", buttons: MessageBoxButtons.OK);
+
+               
+                MRM_Parallel_Data.TECH_CONS_ControlEvent.Set();
+                StopButton_Click(sender, e);
+                ManualRB.Enabled = ProgramRB.Enabled = false;
+                StartButton.Enabled = false;
+                StopButton.Enabled = false;
+                
+                SaveButton.Enabled = false;
+                IdentifyButton.Enabled = false;
+                LoadButton.Enabled = false;
+                EditButton.Enabled = false;
             }
+
+            //MRM.MRMCHPU();
 
             double
                   X = (short)MRM_IO.PortIn(MRM_IO.DOSAdress) / 1000.0,

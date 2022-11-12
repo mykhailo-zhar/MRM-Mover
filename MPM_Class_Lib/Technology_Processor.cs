@@ -86,7 +86,12 @@ namespace MRM_Class_Lib
                     //События на начало обработки
                     MRM_Parallel_Data.GEOM_TECH_ControlEvent.WaitOne();
 
-                    if (MRM_Parallel_Data.Failure) continue;
+                    if (MRM_Parallel_Data.Failure)
+                    {
+                        MRM_Parallel_Data.TECH_GEOM_ControlEvent.Set();
+                        MRM_Parallel_Data.TECH_CONS_ControlEvent.Set();
+                        continue;
+                    }
                     Write_Grep();
 
                     var x = MRM_Parallel_Data.X; if (x != 0) events[0].Set();
@@ -112,13 +117,22 @@ namespace MRM_Class_Lib
         Thread[] threads;
 
         AutoResetEvent[] events = new AutoResetEvent[5];
+
+        ushort tacts = 0;
+        bool failure = false;
         private void TestFailure()
         {
-            MRM_Parallel_Data.Failure |= MRM_IO.PortIn(MRM_IO.DOSAdress + 0) == 1;
-            MRM_Parallel_Data.Failure |= MRM_IO.PortIn(MRM_IO.DOSAdress + 1) == 1;
-            MRM_Parallel_Data.Failure |= MRM_IO.PortIn(MRM_IO.DOSAdress + 2) == 1;
-            MRM_Parallel_Data.Failure |= MRM_IO.PortIn(MRM_IO.DOSAdress + 3) == 1;
-            MRM_Parallel_Data.Failure |= MRM_IO.PortIn(MRM_IO.DOSAdress + 4) == 1;
+            failure = false;
+
+            failure |= MRM_IO.PortIn(MRM_IO.DOSAdress + 0) == 1;
+            failure |= MRM_IO.PortIn(MRM_IO.DOSAdress + 1) == 1;
+            failure |= MRM_IO.PortIn(MRM_IO.DOSAdress + 2) == 1;
+            failure |= MRM_IO.PortIn(MRM_IO.DOSAdress + 3) == 1;
+            failure |= MRM_IO.PortIn(MRM_IO.DOSAdress + 4) == 1;
+
+            if (failure) ++tacts;
+            else tacts = 0;
+            if (tacts > 10) MRM_Parallel_Data.Failure = true; 
         }
         private void Write_Grep() => MRM_IO.PortOut(
             MRM_IO.GrepAdress,

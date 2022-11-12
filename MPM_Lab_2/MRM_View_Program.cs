@@ -13,12 +13,15 @@ namespace MPM_Lab_2
         static void MPM()
         {
 
-            double Rotations = 1.0;
+            double Rotations = 10.0;
             double MM = 100.0;
+
+            double RotationsRound = 1.0;
+            double MMRound = 10000.0;
 
             MRM_IO.IOOpen(MRM_IO.BaseAdress);
             MRM_IO.IOClear();
-            MRM_Drive.PrivodInit(2, 1000);
+            MRM_Drive.PrivodInit(2, 100);
             MRM_Drive.PrivodCreate(
                   MRM_IO.BaseAdress,
                   MRM_IO.CAPAdress,
@@ -37,22 +40,22 @@ namespace MPM_Lab_2
                   MRM_IO.BaseAdress,
                   (short)(MRM_IO.CAPAdress + 2),
                   (short)(MRM_IO.DOSAdress + 2),
-                 Rotations,
-                  MM
+                  RotationsRound,
+                  MMRound
                 );
             MRM_Drive.PrivodCreate(
                   MRM_IO.BaseAdress,
                   (short)(MRM_IO.CAPAdress + 3),
                   (short)(MRM_IO.DOSAdress + 3),
-                  Rotations,
-                  MM
+                  RotationsRound,
+                  MMRound
                 );
             MRM_Drive.PrivodCreate(
                   MRM_IO.BaseAdress,
                   (short)(MRM_IO.CAPAdress + 4),
                   (short)(MRM_IO.DOSAdress + 4),
-                  Rotations,
-                  MM
+                  RotationsRound,
+                  MMRound
                 );
 
 

@@ -44,16 +44,16 @@ namespace MRM_Class_Lib
 
         public static bool Working = true;
 
-        public void MRMCHPU()
+        public static void MRMCHPU()
         {
             double
-                       X = (short)MRM_IO.PortIn(MRM_IO.DOSAdress) / 1000.0,
-                       Y = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 1) / 1000.0,
-                       C = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 2) / 10.0,
-                       U1 = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 3) / 10.0,
-                       U2 = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 4) / 10.0;
+                       X = (short)MRM_IO.PortIn(MRM_IO.DOSAdress) / 1000,
+                       Y = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 1) / 1000,
+                       C = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 2) / 1000,
+                       U1 = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 3) / 1000,
+                       U2 = (short)MRM_IO.PortIn(MRM_IO.DOSAdress + 4) / 1000;
 
-            MRMSetAll(C, U1, U2, Y, X);
+            MRMSetAll(C, U1, U2, X, Y);
         }
 
         public static void Init_Connection()

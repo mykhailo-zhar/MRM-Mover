@@ -20,12 +20,16 @@ namespace MRM_Class_Lib
                 MRM_Parallel_Data.Log(GetType().Name, true, "Started");
                 while (MRM_Parallel_Data.ProgramWorking)
                 {
-                    if (MRM_Parallel_Data.Failure) continue;
-
                     //Событие на сигнал остановки/продолжения
                     MRM_Parallel_Data.CONS_GEOM_ControlEvent.WaitOne();
                     //Событие на сигнал об окончании 
                     MRM_Parallel_Data.TECH_GEOM_ControlEvent.WaitOne();
+                    if (MRM_Parallel_Data.Failure) {
+
+                        MRM_Parallel_Data.GEOM_TECH_ControlEvent.Set();
+                        continue; 
+                    }
+
 
                     //Шаг прощёта геометрии
                     if(MRM_Parallel_Data.Instruction != null) MRM_Parallel_Data.Instruction.ProcessStep();
